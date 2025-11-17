@@ -4,6 +4,20 @@ function HomePage() {
   return (
     <div className="bk-homepage">
       <header className="bk-hero">
+        <div className="bk-hero-background">
+          <div className="bk-hero-gradient"></div>
+          <div className="bk-hero-particles">
+            {[...Array(20)].map((_, i) => (
+              <div key={i} className={`bk-particle particle-${i + 1}`}></div>
+            ))}
+          </div>
+          <div className="bk-hero-shapes">
+            <div className="bk-shape shape-1"></div>
+            <div className="bk-shape shape-2"></div>
+            <div className="bk-shape shape-3"></div>
+            <div className="bk-shape shape-4"></div>
+          </div>
+        </div>
         <div className="bk-hero-icons">
           <span className="bk-hero-icon floating-1">⭐</span>
           <span className="bk-hero-icon floating-2">💬</span>
@@ -16,9 +30,17 @@ function HomePage() {
         </div>
         <div className="container">
           <div className="bk-hero-content">
-            <h1 className="bk-title">BewertungKlar</h1>
+            <div className="bk-hero-badge-new">
+              <span className="bk-badge-icon">✨</span>
+              <span>KI-Powered Review Management</span>
+            </div>
+            <h1 className="bk-title">
+              <span className="bk-title-gradient">BewertungKlar</span>
+            </h1>
             <p className="bk-subtitle">
-              Die intelligente Bewertungsverwaltung für deutsche Shopify-Stores mit KI-gestützter Sentiment-Analyse und vollautomatischer Moderation
+              Die intelligente Bewertungsverwaltung für deutsche Shopify-Stores mit 
+              <span className="bk-highlight"> KI-gestützter Sentiment-Analyse</span> und 
+              <span className="bk-highlight"> vollautomatischer Moderation</span>
             </p>
             <div className="bk-cta-group">
               <a 
@@ -27,16 +49,36 @@ function HomePage() {
                 target="_blank" 
                 rel="noopener noreferrer"
               >
-                Kostenlos installieren
+                <span className="bk-cta-icon">🚀</span>
+                <span>Kostenlos installieren</span>
+                <span className="bk-cta-arrow">→</span>
               </a>
               <a href="#features" className="bk-cta secondary">
-                Features entdecken
+                <span className="bk-cta-icon">✨</span>
+                <span>Features entdecken</span>
               </a>
             </div>
-            <p className="bk-hero-badges">
-              ✨ Kostenlose Version verfügbar • 🇩🇪 100% DSGVO-konform • 🤖 KI-powered
-            </p>
+            <div className="bk-hero-badges">
+              <div className="bk-badge-item">
+                <span className="bk-badge-emoji">✨</span>
+                <span>Kostenlose Version</span>
+              </div>
+              <div className="bk-badge-item">
+                <span className="bk-badge-emoji">🇩🇪</span>
+                <span>100% DSGVO-konform</span>
+              </div>
+              <div className="bk-badge-item">
+                <span className="bk-badge-emoji">🤖</span>
+                <span>KI-powered</span>
+              </div>
+            </div>
           </div>
+        </div>
+        <div className="bk-hero-scroll-indicator">
+          <div className="bk-scroll-mouse">
+            <div className="bk-scroll-wheel"></div>
+          </div>
+          <span>Scroll to explore</span>
         </div>
       </header>
 
