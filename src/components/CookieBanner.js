@@ -66,3 +66,4 @@ function CookieBanner({ isVisible, onAccept, onReject, onClose }) {
 }
 
 export default CookieBanner;
+
