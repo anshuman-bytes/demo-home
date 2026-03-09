@@ -1,237 +1,223 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+
+function useScrollReveal(threshold = 0.12) {
+  const ref = useRef(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setInView(true);
+      },
+      { threshold, rootMargin: '0px 0px -40px 0px' }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [threshold]);
+
+  return [ref, inView];
+}
 
 function HomePage() {
+  const [featuresRef, featuresInView] = useScrollReveal(0.08);
+  const [processRef, processInView] = useScrollReveal(0.08);
+  const [ctaRef, ctaInView] = useScrollReveal(0.2);
+
   return (
     <div className="bk-homepage">
+      {/* ═══════════════════════════════════════════════════════════
+          HERO — Dark mesh, orbs, staggered text, glow CTAs
+      ═══════════════════════════════════════════════════════════ */}
       <header className="bk-hero">
-        <div className="bk-hero-background">
-          <div className="bk-hero-gradient"></div>
-          <div className="bk-hero-particles">
-            {[...Array(20)].map((_, i) => (
-              <div key={i} className={`bk-particle particle-${i + 1}`}></div>
-            ))}
+        <div className="bk-hero-bg">
+          <div className="bk-hero-mesh" />
+          <div className="bk-hero-orb bk-hero-orb-1" />
+          <div className="bk-hero-orb bk-hero-orb-2" />
+          <div className="bk-hero-orb bk-hero-orb-3" />
+          <div className="bk-hero-grid" />
+          <div className="bk-hero-noise" />
+        </div>
+
+        <div className="bk-hero-inner container">
+          <div className="bk-hero-badge reveal-1">
+            <span className="bk-hero-badge-dot" />
+            <span>KI-gestützte Bewertungsverwaltung</span>
           </div>
-          <div className="bk-hero-shapes">
-            <div className="bk-shape shape-1"></div>
-            <div className="bk-shape shape-2"></div>
-            <div className="bk-shape shape-3"></div>
-            <div className="bk-shape shape-4"></div>
+
+          <h1 className="bk-hero-title">
+            <span className="bk-hero-title-line bk-hero-title-line-main">
+              <span className="bk-hero-title-word">Bewertung</span>
+              <span className="bk-hero-title-word bk-hero-title-accent">Klar</span>
+            </span>
+            <span className="bk-hero-title-line reveal-3">
+              Einfach. Automatisch. DSGVO-sicher.
+            </span>
+          </h1>
+
+          <p className="bk-hero-subtitle reveal-4">
+            Sentiment-Analyse in Echtzeit, intelligente Moderation und Analytics
+            für Ihren Shopify-Store — mit einem Klick installiert.
+          </p>
+
+          <div className="bk-hero-cta reveal-5">
+            <a
+              href="https://apps.shopify.com/bewertungklar"
+              className="bk-btn bk-btn-primary"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span className="bk-btn-shine" />
+              <span className="bk-btn-text">Kostenlos installieren</span>
+              <span className="bk-btn-arrow">→</span>
+            </a>
+            <a href="#features" className="bk-btn bk-btn-ghost">
+              <span>Features ansehen</span>
+            </a>
+          </div>
+
+          <div className="bk-hero-pills reveal-6">
+            <span className="bk-pill"><span className="bk-pill-icon">✨</span> Kostenlos</span>
+            <span className="bk-pill"><span className="bk-pill-icon">🇩🇪</span> DSGVO</span>
+            <span className="bk-pill"><span className="bk-pill-icon">🤖</span> KI</span>
           </div>
         </div>
-        <div className="bk-hero-icons">
-          <span className="bk-hero-icon floating-1">⭐</span>
-          <span className="bk-hero-icon floating-2">💬</span>
-          <span className="bk-hero-icon floating-3">🤖</span>
-          <span className="bk-hero-icon floating-4">📊</span>
-          <span className="bk-hero-icon floating-5">✉️</span>
-          <span className="bk-hero-icon floating-6">🛡️</span>
-          <span className="bk-hero-icon floating-7">🚀</span>
-          <span className="bk-hero-icon floating-8">🎯</span>
-        </div>
-        <div className="container">
-          <div className="bk-hero-content">
-            <div className="bk-hero-badge-new">
-              <span className="bk-badge-icon">✨</span>
-              <span>KI-Powered Review Management</span>
-            </div>
-            <h1 className="bk-title">
-              <span className="bk-title-gradient">BewertungKlar</span>
-            </h1>
-            <p className="bk-subtitle">
-              Die intelligente Bewertungsverwaltung für deutsche Shopify-Stores mit 
-              <span className="bk-highlight"> KI-gestützter Sentiment-Analyse</span> und 
-              <span className="bk-highlight"> vollautomatischer Moderation</span>
-            </p>
-            <div className="bk-cta-group">
-              <a 
-                href="https://apps.shopify.com/bewertungklar" 
-                className="bk-cta primary"
-                target="_blank" 
-                rel="noopener noreferrer"
-              >
-                <span className="bk-cta-icon">🚀</span>
-                <span>Kostenlos installieren</span>
-                <span className="bk-cta-arrow">→</span>
-              </a>
-              <a href="#features" className="bk-cta secondary">
-                <span className="bk-cta-icon">✨</span>
-                <span>Features entdecken</span>
-              </a>
-            </div>
-            <div className="bk-hero-badges">
-              <div className="bk-badge-item">
-                <span className="bk-badge-emoji">✨</span>
-                <span>Kostenlose Version</span>
-              </div>
-              <div className="bk-badge-item">
-                <span className="bk-badge-emoji">🇩🇪</span>
-                <span>100% DSGVO-konform</span>
-              </div>
-              <div className="bk-badge-item">
-                <span className="bk-badge-emoji">🤖</span>
-                <span>KI-powered</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="bk-hero-scroll-indicator">
-          <div className="bk-scroll-mouse">
-            <div className="bk-scroll-wheel"></div>
-          </div>
-          <span>Scroll to explore</span>
+
+        <div className="bk-hero-scroll">
+          <div className="bk-hero-scroll-line" />
+          <span>Scroll</span>
         </div>
       </header>
 
-      <section id="features" className="bk-features">
+      {/* ═══════════════════════════════════════════════════════════
+          FEATURES — Bento grid, scroll-reveal, hover tilt/glow
+      ═══════════════════════════════════════════════════════════ */}
+      <section id="features" className="bk-features" ref={featuresRef}>
         <div className="container">
-          <div className="bk-features-content">
-            <h2 className="bk-section-title">Intelligente Features für Ihren Erfolg</h2>
-            <p className="bk-section-subtitle">
-              Sparen Sie Zeit und steigern Sie Ihre Conversion mit unseren KI-gestützten Automatisierungen
+          <div className={`bk-features-head ${featuresInView ? 'in-view' : ''}`}>
+            <h2 className="bk-features-title">Alles für Ihren Review-Erfolg</h2>
+            <p className="bk-features-subtitle">
+              Eine Plattform: KI-Moderation, Analytics und Compliance — ohne Aufwand.
             </p>
-            
-            <div className="bk-feature-grid">
-              <div className="bk-feature-card fade-in-up stagger-1">
-                <div className="bk-feature-icon">🤖</div>
-                <h3 className="bk-feature-title">KI Sentiment-Analyse</h3>
-                <p className="bk-feature-description">
-                  Multilinguales BERT-Modell analysiert automatisch die Stimmung jeder Bewertung in Deutsch, Englisch, Französisch, Spanisch, Italienisch und Niederländisch.
-                </p>
-                <div className="bk-feature-tags">
-                  <span className="bk-tag">Multilingual</span>
-                  <span className="bk-tag">Echtzeit</span>
-                </div>
-              </div>
+          </div>
 
-              <div className="bk-feature-card fade-in-up stagger-2">
-                <div className="bk-feature-icon">🎯</div>
-                <h3 className="bk-feature-title">Intelligente Auto-Moderation</h3>
-                <p className="bk-feature-description">
-                  Regelbasierte Automatisierung: Bewertungen werden basierend auf Sternen, Sentiment, Keywords und Länge automatisch genehmigt oder abgelehnt.
-                </p>
-                <div className="bk-feature-tags">
-                  <span className="bk-tag">Zeitersparnis</span>
-                  <span className="bk-tag">Flexibel</span>
-                </div>
+          <div className="bk-bento">
+            <div className={`bk-bento-card bk-bento-large reveal-card ${featuresInView ? 'in-view' : ''}`} style={{ transitionDelay: '0.1s' }}>
+              <div className="bk-bento-glow" />
+              <div className="bk-bento-icon">🤖</div>
+              <h3>KI Sentiment-Analyse</h3>
+              <p>Multilinguales BERT-Modell: Stimmung jeder Bewertung in 6 Sprachen — automatisch und in Echtzeit.</p>
+              <div className="bk-bento-tags">
+                <span>Multilingual</span><span>Echtzeit</span>
               </div>
+            </div>
 
-              <div className="bk-feature-card fade-in-up stagger-3">
-                <div className="bk-feature-icon">📧</div>
-                <h3 className="bk-feature-title">E-Mail Template Editor</h3>
-                <p className="bk-feature-description">
-                  Erstellen Sie benutzerdefinierte E-Mail-Vorlagen mit HTML/Plain Text, Variablen-Substitution und Live-Vorschau. SendGrid-Integration für professionellen Versand.
-                </p>
-                <div className="bk-feature-tags">
-                  <span className="bk-tag">Anpassbar</span>
-                  <span className="bk-tag">Professionell</span>
-                </div>
+            <div className={`bk-bento-card reveal-card ${featuresInView ? 'in-view' : ''}`} style={{ transitionDelay: '0.2s' }}>
+              <div className="bk-bento-glow" />
+              <div className="bk-bento-icon">🎯</div>
+              <h3>Auto-Moderation</h3>
+              <p>Regeln nach Sternen, Sentiment und Keywords — Bewertungen automatisch freigeben oder ablehnen.</p>
+              <div className="bk-bento-tags">
+                <span>Zeitersparnis</span><span>Flexibel</span>
               </div>
+            </div>
 
-              <div className="bk-feature-card fade-in-up stagger-4">
-                <div className="bk-feature-icon">📊</div>
-                <h3 className="bk-feature-title">Analytics Dashboard</h3>
-                <p className="bk-feature-description">
-                  Umfassende Statistiken: Bewertungs-Trends, Sentiment-Verteilung, Durchschnittsbewertungen pro Monat, DSGVO-Compliance-Metriken und mehr.
-                </p>
-                <div className="bk-feature-tags">
-                  <span className="bk-tag">Insights</span>
-                  <span className="bk-tag">Echtzeit</span>
-                </div>
+            <div className={`bk-bento-card reveal-card ${featuresInView ? 'in-view' : ''}`} style={{ transitionDelay: '0.25s' }}>
+              <div className="bk-bento-glow" />
+              <div className="bk-bento-icon">📊</div>
+              <h3>Analytics</h3>
+              <p>Trends, Sentiment-Verteilung, DSGVO-Metriken — alles auf einen Blick.</p>
+              <div className="bk-bento-tags">
+                <span>Insights</span><span>Echtzeit</span>
               </div>
+            </div>
 
-              <div className="bk-feature-card fade-in-up stagger-5">
-                <div className="bk-feature-icon">🛡️</div>
-                <h3 className="bk-feature-title">100% DSGVO-konform</h3>
-                <p className="bk-feature-description">
-                  Compliance-Webhooks, Consent-Tracking, Datenexport, Right-to-Erasure, konfigurierbare Datenspeicherung (30-2555 Tage) und vollständiges Audit-Trail.
-                </p>
-                <div className="bk-feature-tags">
-                  <span className="bk-tag">Rechtsicher</span>
-                  <span className="bk-tag">DSGVO</span>
-                </div>
+            <div className={`bk-bento-card bk-bento-wide reveal-card ${featuresInView ? 'in-view' : ''}`} style={{ transitionDelay: '0.15s' }}>
+              <div className="bk-bento-glow" />
+              <div className="bk-bento-icon">🛡️</div>
+              <h3>100% DSGVO-konform</h3>
+              <p>Compliance-Webhooks, Consent-Tracking, Datenexport, Right-to-Erasure und konfigurierbare Speicherfristen mit vollständigem Audit-Trail.</p>
+              <div className="bk-bento-tags">
+                <span>Rechtsicher</span><span>DSGVO</span>
               </div>
+            </div>
 
-              <div className="bk-feature-card fade-in-up stagger-6">
-                <div className="bk-feature-icon">🗑️</div>
-                <h3 className="bk-feature-title">Review Management</h3>
-                <p className="bk-feature-description">
-                  Vollständige Kontrolle: Einzelne oder Bulk-Aktionen, Löschen mit Bestätigung, Veröffentlichen, Verstecken, Händler-Antworten und mehr.
-                </p>
-                <div className="bk-feature-tags">
-                  <span className="bk-tag">Flexibel</span>
-                  <span className="bk-tag">Bulk-Actions</span>
-                </div>
+            <div className={`bk-bento-card reveal-card ${featuresInView ? 'in-view' : ''}`} style={{ transitionDelay: '0.3s' }}>
+              <div className="bk-bento-glow" />
+              <div className="bk-bento-icon">⚡</div>
+              <h3>Review Management</h3>
+              <p>Bulk-Aktionen, Händler-Antworten, Veröffentlichen & Verstecken — volle Kontrolle.</p>
+              <div className="bk-bento-tags">
+                <span>Flexibel</span><span>Bulk</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="bk-process">
+      {/* ═══════════════════════════════════════════════════════════
+          PROCESS — Timeline with animated steps
+      ═══════════════════════════════════════════════════════════ */}
+      <section className="bk-process" ref={processRef}>
+        <div className="bk-process-bg" />
         <div className="container">
-          <h2 className="bk-section-title">So einfach geht's</h2>
-          <p className="bk-section-subtitle">
-            In wenigen Minuten zur professionellen Bewertungsverwaltung
-          </p>
-          <div className="bk-process-grid">
-            <div className="bk-process-step">
-              <div className="bk-step-number">1</div>
-              <h3 className="bk-step-title">App installieren</h3>
-              <p className="bk-step-description">
-                Installieren Sie BewertungKlar mit einem Klick aus dem Shopify App Store - keine technischen Kenntnisse erforderlich.
-              </p>
-            </div>
-            <div className="bk-process-step">
-              <div className="bk-step-number">2</div>
-              <h3 className="bk-step-title">Auto-Regeln konfigurieren</h3>
-              <p className="bk-step-description">
-                Richten Sie intelligente Auto-Moderation und E-Mail-Vorlagen nach Ihren Wünschen ein. Unsere KI übernimmt den Rest.
-              </p>
-            </div>
-            <div className="bk-process-step">
-              <div className="bk-step-number">3</div>
-              <h3 className="bk-step-title">Bewertungen sammeln</h3>
-              <p className="bk-step-description">
-                Automatische E-Mails nach Kauf, Sentiment-Analyse in Echtzeit und intelligente Moderation - alles auf Autopilot.
-              </p>
-            </div>
-            <div className="bk-process-step">
-              <div className="bk-step-number">4</div>
-              <h3 className="bk-step-title">Umsatz steigern</h3>
-              <p className="bk-step-description">
-                Mehr Vertrauen durch authentische Bewertungen = höhere Conversion-Rate = mehr Umsatz für Ihren Shop.
-              </p>
-            </div>
+          <div className={`bk-process-head ${processInView ? 'in-view' : ''}`}>
+            <h2 className="bk-process-title">In 4 Schritten live</h2>
+            <p className="bk-process-subtitle">Installation, Konfiguration, Automatisierung — dann läuft es.</p>
+          </div>
+
+          <div className="bk-timeline">
+            {[
+              { num: '01', title: 'App installieren', desc: 'Ein Klick im Shopify App Store, keine Technik nötig.' },
+              { num: '02', title: 'Regeln einrichten', desc: 'Auto-Moderation und Benachrichtigungen nach Ihren Wünschen.' },
+              { num: '03', title: 'Bewertungen sammeln', desc: 'Sentiment-Analyse und Moderation laufen automatisch.' },
+              { num: '04', title: 'Umsatz steigern', desc: 'Mehr Vertrauen durch echte Bewertungen = mehr Conversion.' },
+            ].map((step, i) => (
+              <div
+                key={step.num}
+                className={`bk-timeline-step ${processInView ? 'in-view' : ''}`}
+                style={{ transitionDelay: `${0.15 * i}s` }}
+              >
+                <div className="bk-timeline-marker">
+                  <span className="bk-timeline-num">{step.num}</span>
+                  {i < 3 && <div className="bk-timeline-line" />}
+                </div>
+                <div className="bk-timeline-content">
+                  <h3>{step.title}</h3>
+                  <p>{step.desc}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="bk-cta-section">
+      {/* ═══════════════════════════════════════════════════════════
+          CTA — Full-width glow, strong primary button
+      ═══════════════════════════════════════════════════════════ */}
+      <section className="bk-cta" ref={ctaRef}>
+        <div className="bk-cta-bg" />
         <div className="container">
-          <div className="bk-cta-content">
-            <h2 className="bk-cta-title">Bereit für intelligente Bewertungsverwaltung?</h2>
-            <p className="bk-cta-description">
-              Automatisieren Sie Ihre Review-Verwaltung mit KI-Power und sparen Sie täglich wertvolle Zeit bei der Moderation.
-            </p>
+          <div className={`bk-cta-inner ${ctaInView ? 'in-view' : ''}`}>
+            <h2 className="bk-cta-title">Bereit für weniger Arbeit, mehr Bewertungen?</h2>
+            <p className="bk-cta-desc">KI übernimmt die Moderation — Sie behalten die Kontrolle.</p>
             <div className="bk-cta-buttons">
-              <a 
-                href="https://apps.shopify.com/bewertungklar" 
-                className="bk-cta large primary"
-                target="_blank" 
+              <a
+                href="https://apps.shopify.com/bewertungklar"
+                className="bk-btn bk-btn-primary bk-btn-lg"
+                target="_blank"
                 rel="noopener noreferrer"
               >
-                🚀 Jetzt kostenlos starten
+                <span className="bk-btn-shine" />
+                <span className="bk-btn-text">Jetzt kostenlos starten</span>
+                <span className="bk-btn-arrow">→</span>
               </a>
-              <a 
-                href="mailto:support@bewertungklar.de" 
-                className="bk-cta large secondary"
-              >
-                💬 Demo anfordern
+              <a href="mailto:support@bewertungklar.de" className="bk-btn bk-btn-ghost bk-btn-lg">
+                Demo anfordern
               </a>
             </div>
-            <div className="bk-cta-note">
-              ✨ Kostenlose Version verfügbar  •  🎯 Setup in 5 Minuten  •  🛡️ 100% DSGVO-konform  •  🤖 KI-powered
-            </div>
+            <p className="bk-cta-note">Kostenlose Version · Setup in 5 Min · DSGVO-konform · KI-powered</p>
           </div>
         </div>
       </section>
