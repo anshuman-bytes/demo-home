@@ -1,29 +1,42 @@
 /* ═══════════════════════════════════════════════════════════════════
-   BewertungKlar — Dark theme, cyan/coral, max animations
+   BewertungKlar — Palette: Firefly, Emerald, Zircon, Green, Mint, Banana, Lilac
    ═══════════════════════════════════════════════════════════════════ */
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
 
 :root {
-  /* Dark base */
-  --bg-dark: #06060a;
-  --bg-card: #0c0c12;
-  --bg-elevated: #111118;
-  --bg-muted: #16161d;
-  /* Accent — electric cyan/teal */
-  --accent: #00fff5;
-  --accent-dim: rgba(0, 255, 245, 0.15);
-  --accent-glow: rgba(0, 255, 245, 0.4);
-  /* Primary CTA — coral/orange */
-  --cta: #f97316;
-  --cta-hover: #fb923c;
-  --cta-glow: rgba(249, 115, 22, 0.5);
+  color-scheme: light;
+  /* Palette — from design */
+  --firefly: #0F2830;
+  --emerald: #014751;
+  --zircon: #F8FBFF;
+  --green: #00D37F;
+  --mint: #AFF8C8;
+  --banana: #FFEEB4;
+  --lilac: #D2C4FB;
+  /* Base */
+  --bg-dark: var(--zircon);
+  --bg-card: #ffffff;
+  --bg-elevated: #ffffff;
+  --bg-muted: var(--mint);
+  --bg-warm: var(--banana);
+  --bg-slate: var(--zircon);
+  /* Accent — Green */
+  --accent: var(--green);
+  --accent-dim: rgba(0, 211, 127, 0.18);
+  --accent-glow: rgba(0, 211, 127, 0.35);
+  --accent-strong: var(--emerald);
+  /* CTA */
+  --cta: var(--green);
+  --cta-hover: #00b368;
+  --cta-glow: rgba(0, 211, 127, 0.45);
+  --cta-ink: var(--emerald);
   /* Text */
-  --text: #e4e4e7;
-  --text-muted: #a1a1aa;
-  --text-dim: #71717a;
+  --text: var(--firefly);
+  --text-muted: var(--emerald);
+  --text-dim: var(--emerald);
   /* Borders */
-  --border: rgba(255, 255, 255, 0.06);
-  --border-accent: rgba(0, 255, 245, 0.25);
+  --border: rgba(15, 40, 48, 0.12);
+  --border-accent: rgba(0, 211, 127, 0.35);
   /* Motion */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
@@ -79,9 +92,9 @@ body {
   position: absolute;
   inset: 0;
   background: 
-    radial-gradient(ellipse 120% 80% at 50% -20%, rgba(0, 255, 245, 0.12) 0%, transparent 50%),
-    radial-gradient(ellipse 80% 60% at 90% 50%, rgba(249, 115, 22, 0.08) 0%, transparent 45%),
-    radial-gradient(ellipse 60% 80% at 10% 80%, rgba(0, 255, 245, 0.06) 0%, transparent 45%);
+    radial-gradient(ellipse 120% 80% at 50% -20%, rgba(0, 211, 127, 0.18) 0%, transparent 52%),
+    radial-gradient(ellipse 90% 70% at 90% 45%, rgba(255, 238, 180, 0.35) 0%, transparent 52%),
+    radial-gradient(ellipse 70% 90% at 10% 80%, rgba(210, 196, 251, 0.2) 0%, transparent 55%);
   animation: meshPulse 12s var(--ease-in-out) infinite;
 }
 
@@ -94,14 +107,14 @@ body {
   position: absolute;
   border-radius: 50%;
   filter: blur(80px);
-  opacity: 0.5;
+  opacity: 0.55;
   animation: orbFloat 20s var(--ease-in-out) infinite;
 }
 
 .bk-hero-orb-1 {
   width: 400px;
   height: 400px;
-  background: rgba(0, 255, 245, 0.2);
+  background: rgba(0, 211, 127, 0.2);
   top: -100px;
   left: -100px;
   animation-delay: 0s;
@@ -110,7 +123,7 @@ body {
 .bk-hero-orb-2 {
   width: 300px;
   height: 300px;
-  background: rgba(249, 115, 22, 0.15);
+  background: rgba(255, 238, 180, 0.5);
   bottom: 10%;
   right: 5%;
   animation-delay: -7s;
@@ -119,7 +132,7 @@ body {
 .bk-hero-orb-3 {
   width: 250px;
   height: 250px;
-  background: rgba(0, 255, 245, 0.12);
+  background: rgba(175, 248, 200, 0.45);
   bottom: 30%;
   left: -50px;
   animation-delay: -14s;
@@ -135,8 +148,8 @@ body {
   position: absolute;
   inset: 0;
   background-image: 
-    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    linear-gradient(rgba(15, 40, 48, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 40, 48, 0.06) 1px, transparent 1px);
   background-size: 60px 60px;
   mask-image: radial-gradient(ellipse 80% 50% at 50% 50%, black 20%, transparent 70%);
   -webkit-mask-image: radial-gradient(ellipse 80% 50% at 50% 50%, black 20%, transparent 70%);
@@ -163,7 +176,7 @@ body {
   align-items: center;
   gap: 10px;
   padding: 10px 18px;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(15, 23, 42, 0.04);
   border: 1px solid var(--border);
   border-radius: 100px;
   font-size: 0.9rem;
@@ -173,6 +186,12 @@ body {
   opacity: 0;
   transform: translateY(20px);
   animation: revealUp 0.8s var(--ease-out) 0.2s forwards;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.bk-hero-badge:hover {
+  border-color: var(--border-accent);
+  box-shadow: 0 0 20px rgba(0, 211, 127, 0.18);
 }
 
 .bk-hero-badge-dot {
@@ -205,11 +224,11 @@ body {
 
 /* Hero title */
 .bk-hero-title {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: clamp(2.75rem, 8vw, 5.5rem);
-  font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -0.03em;
+  font-weight: 750;
+  line-height: 1.06;
+  letter-spacing: -0.025em;
   margin-bottom: 24px;
   max-width: 14ch;
   margin-left: auto;
@@ -236,8 +255,8 @@ body {
 }
 
 .bk-hero-title-accent {
-  color: var(--accent);
-  text-shadow: 0 0 60px var(--accent-glow);
+  color: var(--cta);
+  text-shadow: 0 10px 40px rgba(0, 211, 127, 0.25);
 }
 
 .bk-hero-title-line.reveal-3 {
@@ -326,13 +345,13 @@ body {
 }
 
 .bk-btn-ghost {
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(15, 23, 42, 0.04);
   color: var(--text);
   border: 1px solid var(--border);
 }
 
 .bk-btn-ghost:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(15, 23, 42, 0.06);
   border-color: var(--border-accent);
   transform: translateY(-2px);
 }
@@ -358,18 +377,19 @@ body {
   align-items: center;
   gap: 8px;
   padding: 10px 18px;
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(15, 23, 42, 0.03);
   border: 1px solid var(--border);
   border-radius: 100px;
   font-size: 0.9rem;
   color: var(--text-muted);
-  transition: transform 0.3s var(--ease-out), border-color 0.3s ease, background 0.3s ease;
+  transition: transform 0.3s var(--ease-out), border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s var(--ease-out);
 }
 
 .bk-pill:hover {
   border-color: var(--border-accent);
   background: var(--accent-dim);
-  transform: translateY(-2px);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 4px 12px rgba(0, 211, 127, 0.18);
 }
 
 .bk-pill-icon {
@@ -399,7 +419,7 @@ body {
 .bk-hero-scroll-line {
   width: 1px;
   height: 48px;
-  background: linear-gradient(to bottom, var(--accent), transparent);
+  background: linear-gradient(to bottom, var(--cta), transparent);
   border-radius: 2px;
   animation: scrollLine 2s var(--ease-in-out) infinite;
 }
@@ -415,6 +435,21 @@ body {
 .bk-features {
   padding: 120px 0 100px;
   position: relative;
+  background: linear-gradient(180deg, var(--bg-slate) 0%, var(--bg-dark) 50%, var(--bg-dark) 100%);
+}
+
+.bk-features::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 40% at 50% 0%, rgba(0, 211, 127, 0.08) 0%, transparent 60%);
+  pointer-events: none;
+  animation: softPulse 8s var(--ease-in-out) infinite;
+}
+
+@keyframes softPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
 }
 
 .bk-features-head {
@@ -431,7 +466,7 @@ body {
 }
 
 .bk-features-title {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 800;
   letter-spacing: -0.02em;
@@ -463,8 +498,12 @@ body {
   overflow: hidden;
   opacity: 0;
   transform: translateY(40px) scale(0.96);
-  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out), border-color 0.35s ease, transform 0.4s var(--ease-out);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out), border-color 0.35s ease, box-shadow 0.4s var(--ease-out);
   transition-delay: 0.1s;
+}
+
+.bk-bento-card:nth-child(odd) {
+  background: linear-gradient(135deg, #ffffff 0%, var(--bg-muted) 100%);
 }
 
 .bk-bento-card.in-view {
@@ -479,7 +518,7 @@ body {
 .bk-bento-card:hover {
   border-color: var(--border-accent);
   transform: translateY(-6px) scale(1.01);
-  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 24px 48px rgba(2, 6, 23, 0.12);
 }
 
 .bk-bento-glow {
@@ -509,7 +548,7 @@ body {
 }
 
 .bk-bento-card h3 {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 1.35rem;
   font-weight: 700;
   margin-bottom: 12px;
@@ -532,11 +571,11 @@ body {
 .bk-bento-tags span {
   padding: 6px 12px;
   background: var(--accent-dim);
-  color: var(--accent);
+  color: var(--accent-strong);
   font-size: 0.8rem;
   font-weight: 600;
   border-radius: 8px;
-  border: 1px solid rgba(0, 255, 245, 0.2);
+  border: 1px solid rgba(0, 211, 127, 0.3);
   transition: transform 0.25s var(--ease-out), background 0.25s ease;
 }
 
@@ -569,13 +608,15 @@ body {
 .bk-process {
   padding: 100px 0 120px;
   position: relative;
+  background: linear-gradient(180deg, var(--bg-dark) 0%, var(--bg-warm) 30%, var(--bg-dark) 100%);
 }
 
 .bk-process-bg {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 80% 50% at 50% 100%, rgba(0, 255, 245, 0.06) 0%, transparent 60%);
+  background: radial-gradient(ellipse 80% 50% at 50% 100%, rgba(0, 211, 127, 0.1) 0%, transparent 60%);
   pointer-events: none;
+  animation: softPulse 10s var(--ease-in-out) infinite;
 }
 
 .bk-process-head {
@@ -592,7 +633,7 @@ body {
 }
 
 .bk-process-title {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: clamp(1.75rem, 4vw, 2.5rem);
   font-weight: 800;
   margin-bottom: 12px;
@@ -632,10 +673,10 @@ body {
 }
 
 .bk-timeline-num {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 1.5rem;
   font-weight: 800;
-  color: var(--accent);
+  color: var(--cta-ink);
   width: 56px;
   height: 56px;
   display: flex;
@@ -670,7 +711,7 @@ body {
 }
 
 .bk-timeline-content h3 {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 1.25rem;
   font-weight: 700;
   margin-bottom: 8px;
@@ -705,15 +746,107 @@ body {
   padding: 100px 0 120px;
   position: relative;
   overflow: hidden;
+  background: linear-gradient(180deg, var(--bg-dark) 0%, var(--bg-warm) 50%, var(--bg-dark) 100%);
 }
 
 .bk-cta-bg {
   position: absolute;
   inset: 0;
   background: 
-    radial-gradient(ellipse 100% 80% at 50% 0%, rgba(249, 115, 22, 0.12) 0%, transparent 55%),
-    radial-gradient(ellipse 80% 40% at 50% 100%, rgba(0, 255, 245, 0.06) 0%, transparent 50%);
+    radial-gradient(ellipse 100% 80% at 50% 0%, rgba(0, 211, 127, 0.15) 0%, transparent 55%),
+    radial-gradient(ellipse 80% 40% at 50% 100%, rgba(255, 238, 180, 0.3) 0%, transparent 50%);
   pointer-events: none;
+  animation: softPulse 9s var(--ease-in-out) infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   HERO SIDES — fill wide screens (desktop only)
+   ═══════════════════════════════════════════════════════════════════ */
+.bk-hero-sides {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.bk-side-card {
+  position: absolute;
+  width: 260px;
+  padding: 18px 18px 16px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248, 251, 255, 0.9) 100%);
+  border: 1px solid rgba(15, 40, 48, 0.1);
+  box-shadow: 0 18px 48px rgba(2, 6, 23, 0.10);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  transform: translateY(18px);
+  animation: revealUp 0.9s var(--ease-out) 0.95s forwards, sideFloat 10s var(--ease-in-out) 1.2s infinite;
+}
+
+.bk-side-card-left {
+  left: 34px;
+  top: 150px;
+}
+
+.bk-side-card-right {
+  right: 34px;
+  bottom: 190px;
+  animation-name: revealUp, sideFloat2;
+}
+
+.bk-side-card-kicker {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 10px;
+}
+
+.bk-side-card-stat {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--cta-ink);
+  margin-bottom: 6px;
+}
+
+.bk-side-card-desc {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin-bottom: 12px;
+}
+
+.bk-side-card-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.bk-side-card-chips span {
+  padding: 6px 10px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--emerald);
+  background: var(--accent-dim);
+  border: 1px solid rgba(0, 211, 127, 0.28);
+  border-radius: 999px;
+}
+
+@keyframes sideFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes sideFloat2 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(12px); }
+}
+
+@media (max-width: 1100px) {
+  .bk-hero-sides { display: none; }
 }
 
 .bk-cta-inner {
@@ -731,7 +864,7 @@ body {
 }
 
 .bk-cta-title {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: clamp(1.75rem, 4vw, 2.75rem);
   font-weight: 800;
   margin-bottom: 16px;
@@ -771,7 +904,7 @@ body {
 }
 
 .bk-footer {
-  background: var(--bg-card);
+  background: linear-gradient(180deg, var(--bg-slate) 0%, var(--bg-muted) 100%);
   border-top: 1px solid var(--border);
   color: var(--text-muted);
   padding: 64px 0 32px;
@@ -792,7 +925,7 @@ body {
 }
 
 .bk-footer-section h3 {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 1.25rem;
   font-weight: 700;
   color: var(--text);
@@ -820,11 +953,13 @@ body {
 .bk-footer-section a {
   color: var(--text-muted);
   text-decoration: none;
-  transition: color 0.25s ease;
+  transition: color 0.25s ease, transform 0.25s var(--ease-out);
+  display: inline-block;
 }
 
 .bk-footer-section a:hover {
-  color: var(--accent);
+  color: var(--cta-ink);
+  transform: translateX(4px);
 }
 
 .bk-footer-bottom {
@@ -851,15 +986,16 @@ body {
 .bk-footer-badges .bk-badge {
   padding: 8px 14px;
   background: var(--accent-dim);
-  color: var(--accent);
+  color: var(--accent-strong);
   font-size: 0.85rem;
   font-weight: 600;
   border-radius: 10px;
-  border: 1px solid var(--border-accent);
-  transition: transform 0.25s var(--ease-out);
+  border: 1px solid rgba(0, 211, 127, 0.3);
+  transition: transform 0.25s var(--ease-out), background 0.25s ease, color 0.25s ease;
 }
-
 .bk-footer-badges .bk-badge:hover {
+  background: rgba(0, 211, 127, 0.25);
+  color: var(--firefly);
   transform: translateY(-2px);
 }
 
@@ -892,7 +1028,7 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: var(--accent);
+  color: var(--cta-ink);
   text-decoration: none;
   font-weight: 600;
   margin-bottom: 20px;
@@ -905,7 +1041,7 @@ body {
 }
 
 .bk-legal-title {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 2.25rem;
   font-weight: 800;
   color: var(--text);
@@ -928,7 +1064,7 @@ body {
 }
 
 .bk-legal-content h2 {
-  color: var(--accent);
+  color: var(--cta-ink);
   font-size: 1.5rem;
   margin: 36px 0 16px;
   font-weight: 700;
@@ -957,7 +1093,7 @@ body {
   padding: 24px;
   border-radius: 12px;
   margin: 24px 0;
-  border-left: 4px solid var(--accent);
+  border-left: 4px solid var(--green);
 }
 
 @media (max-width: 768px) {
@@ -971,7 +1107,7 @@ body {
 .cookie-banner-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(2, 6, 23, 0.35);
   backdrop-filter: blur(6px);
   z-index: 9999;
   display: flex;
@@ -989,13 +1125,13 @@ body {
   max-height: 85vh;
   overflow: auto;
   position: relative;
-  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 24px 48px rgba(2, 6, 23, 0.18);
 }
 .cookie-banner-content {
   padding: 28px 24px;
 }
 .cookie-banner-content h3 {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 1.25rem;
   color: var(--text);
   margin-bottom: 12px;
@@ -1071,9 +1207,14 @@ body {
   .bk-hero-mesh,
   .bk-hero-badge-dot,
   .bk-hero-scroll-line,
-  .bk-btn-shine {
+  .bk-btn-shine,
+  .bk-features::before,
+  .bk-process-bg,
+  .bk-cta-bg,
+  .bk-side-card {
     animation: none !important;
   }
+  .bk-features::before { opacity: 1; }
   .reveal-1, .reveal-2, .reveal-3, .reveal-4, .reveal-5, .reveal-6 {
     animation: none !important;
     opacity: 1;

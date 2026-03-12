@@ -40,6 +40,28 @@ function HomePage() {
           <div className="bk-hero-noise" />
         </div>
 
+        <div className="bk-hero-sides" aria-hidden="true">
+          <div className="bk-side-card bk-side-card-left">
+            <div className="bk-side-card-kicker">Vertrauen</div>
+            <div className="bk-side-card-stat">+28% Conversion</div>
+            <div className="bk-side-card-desc">Mit echten Bewertungen & klarer Moderation.</div>
+            <div className="bk-side-card-chips">
+              <span>⭐ Social Proof</span>
+              <span>🛡️ DSGVO</span>
+            </div>
+          </div>
+
+          <div className="bk-side-card bk-side-card-right">
+            <div className="bk-side-card-kicker">Automatisierung</div>
+            <div className="bk-side-card-stat">5 Min Setup</div>
+            <div className="bk-side-card-desc">Regeln, Benachrichtigungen, Analytics — done.</div>
+            <div className="bk-side-card-chips">
+              <span>🤖 KI</span>
+              <span>⚡ Echtzeit</span>
+            </div>
+          </div>
+        </div>
+
         <div className="bk-hero-inner container">
           <div className="bk-hero-badge reveal-1">
             <span className="bk-hero-badge-dot" />
