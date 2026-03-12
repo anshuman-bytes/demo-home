@@ -235,9 +235,6 @@ function HomePage() {
                 <span className="bk-btn-text">Jetzt kostenlos starten</span>
                 <span className="bk-btn-arrow">→</span>
               </a>
-              <a href="mailto:support@bewertungklar.de" className="bk-btn bk-btn-ghost bk-btn-lg">
-                Demo anfordern
-              </a>
             </div>
             <p className="bk-cta-note">Kostenlose Version · Setup in 5 Min · DSGVO-konform · KI-powered</p>
           </div>
